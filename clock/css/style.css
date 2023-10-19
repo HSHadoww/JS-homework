@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: all 0.5s ease-in;
+}
+
+.clock {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number {
+    transform: rotate(calc(30deg*Var(--n)));
+    position: absolute;
+    text-align: center;
+    inset: 20px;
+    font-size: 20px;
+}
+
+.number b {
+    transform: rotate(calc(-30deg*Var(--n)));
+    display: inline-block;
+}
+
+.light-mode {
+    background-color: #fff;
+    color: #000;
+}
+
+.dark-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+.toggle {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 100px;
+    outline: none;
+    transition: all 0.5s ease-in;
+}
+
+.dark-mode .toggle {
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+}
+
+.light-mode .toggle {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+}
+
+.point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.point::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    left: 2.5px;
+    top: 2.5px;
+}
+
+.hour, .minute, .second {
+    --rotate: 0;
+    position: absolute;
+    left: 49.25%;
+    bottom: 50%;
+    transform: translate(-50%)rotate(calc(var(--rotate)*1deg));
+    transform-origin: bottom;
+}
+.hour{
+    width: 5px;
+    height: 50px;
+    background-color: #000;
+}
+.minute {
+    width: 5px;
+    height: 80px;
+    background-color: #000;
+}
+
+.second {
+    width: 5px;
+    height: 100px;
+    background-color: red;
+}
+
+.dark-mode .hour,
+.dark-mode .minute,
+.dark-mode .point::after{
+    background-color: #fff;
+}
+
+.light-mode .hour,
+.light-mode .minute,
+.light-mode .point::after{
+    background-color: #000;
+}
